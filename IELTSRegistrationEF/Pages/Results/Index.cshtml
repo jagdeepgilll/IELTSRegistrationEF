@@ -1,0 +1,48 @@
+﻿@page
+@model IELTSRegistrationEF.Pages.Results.IndexModel
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].BookingID)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].Band)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Result[0].Registration)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model.Result) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BookingID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Band)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Registration.ID)
+            </td>
+            <td>
+                <a asp-page="./Edit" asp-route-id="@item.ID">Edit</a> |
+                <a asp-page="./Details" asp-route-id="@item.ID">Details</a> |
+                <a asp-page="./Delete" asp-route-id="@item.ID">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
